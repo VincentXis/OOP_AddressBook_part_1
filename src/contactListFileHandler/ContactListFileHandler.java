@@ -15,7 +15,7 @@ public class ContactListFileHandler {
      * If the list is empty: the method does noting.
      * If the list isn't empty: a FileOutputStream and ObjectOutputStream
      * is opened, and the entire ArrayList object is written to a file
-     * called "ContactList.data"
+     * called "savedContactList.data"
      * <p>
      * TODO: Compare current list with contents of file, only overwrite if different
      *
@@ -37,7 +37,7 @@ public class ContactListFileHandler {
      * The method is used by ContactRegister to initialize the contactList ArrayList,
      * with an existing list or a new empty list.
      * <p>
-     * This method checks if the file "ContactList.data" exists.
+     * This method checks if the file "savedContactList.data" exists.
      * If true:
      * A FileInputStream is opened and the containing object is read into ObjectInputStream,
      * the object is then cast to a ArrayList<Contact> and returned.
@@ -46,7 +46,7 @@ public class ContactListFileHandler {
      * Conditional return:
      *
      * @return existing ArrayList<contact> or new ArrayList
-     * Suppresses warning "unchecked cast"
+     * Suppresses warning "unchecked cast" - to stop intelliJ's nagging.
      */
     @SuppressWarnings("unchecked")
     public ArrayList<Contact> loadListFromFile() {
