@@ -3,15 +3,11 @@ package contactListFileHandler;
 import contactObject.Contact;
 
 import java.io.*;
-import java.lang.invoke.LambdaMetafactory;
-import java.lang.invoke.SerializedLambda;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.logging.FileHandler;
 
 public class ContactListFileHandler {
-    private File savedContacts = new File("savedContactList.data");
+    // The contactList is stored to this file, created in the src directory.
+    private File savedContacts = new File("src/savedContactList.data");
 
     /**
      * XFN-2.1: Save ContactList to file (serialization)

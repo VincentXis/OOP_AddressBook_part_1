@@ -64,7 +64,7 @@ public class ContactRegister {
     public void searchContact(String query) {
         contactList.stream().filter(contact ->
                 contact.getFirstName().toLowerCase().startsWith(query) ||
-                contact.getLastName().toLowerCase().startsWith(query))
+                        contact.getLastName().toLowerCase().startsWith(query))
                 .forEach(System.out::println);
     }
 
