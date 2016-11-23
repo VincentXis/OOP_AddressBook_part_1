@@ -16,16 +16,14 @@ public class ContactListFileHandler {
      * If the list isn't empty: a FileOutputStream and ObjectOutputStream
      * is opened, and the entire ArrayList object is written to a file
      * called "savedContactList.data"
-     * <p>
-     * TODO: Compare current list with contents of file, only overwrite if different
      *
-     * @param listOfObjects Contact list to save in file
+     * @param listOfContacts Contact list to save into a file.
      */
-    public void saveListToDisk(ArrayList<Contact> listOfObjects) {
-        if (!listOfObjects.isEmpty()) {
+    public void saveListToDisk(ArrayList<Contact> listOfContacts) {
+        if (!listOfContacts.isEmpty()) {
             try (FileOutputStream fos = new FileOutputStream(savedContacts);
                  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                oos.writeObject(listOfObjects);
+                oos.writeObject(listOfContacts);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -33,20 +31,22 @@ public class ContactListFileHandler {
     }
 
     /**
-     * XFN-2.1 Load ContactList from file (deserialization)
-     * The method is used by ContactRegister to initialize the contactList ArrayList,
-     * with an existing list or a new empty list.
+     * XFN-2.1: Load ContactList from file (deserialization)
+     * This method is used by ContactRegister to initialize the contactList (ArrayList),
+     * with an existing list or a new ArrayList if the file doesn't exist.
      * <p>
-     * This method checks if the file "savedContactList.data" exists.
+     * The method checks if the file "savedContactList.data" exists.
      * If true:
      * A FileInputStream is opened and the containing object is read into ObjectInputStream,
      * the object is then cast to a ArrayList<Contact> and returned.
      * If false:
-     * the method returns a new ArrayList,
+     * the method returns a new ArrayList.
+     * <p>
      * Conditional return:
      *
      * @return existing ArrayList<contact> or new ArrayList
-     * Suppresses warning "unchecked cast" - to stop intelliJ's nagging.
+     * Suppresses warning "unchecked cast" - to stop intelliJ's nagging
+     * (so that this doesn't happen...) Me -> (╯°o°)╯︵ ┻┻ ‎<- Table
      */
     @SuppressWarnings("unchecked")
     public ArrayList<Contact> loadListFromFile() {

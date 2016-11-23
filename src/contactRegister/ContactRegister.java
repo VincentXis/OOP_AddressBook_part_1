@@ -12,7 +12,7 @@ public class ContactRegister {
     /**
      * The constructor initiates contactList through a method in
      * ContactListFileHandler, that either returns a previously
-     * saved list or a new ArrayList<>()
+     * saved list if such a list exists or a new ArrayList<>() if not.
      */
     public ContactRegister() {
         this.contactList = clf.loadListFromFile();
@@ -22,7 +22,8 @@ public class ContactRegister {
      * FN-2: Add new Contact to register
      * <p>
      * The method receives the three strings needed to create a new Contact,
-     * each string is added in the order of contact constructor requires
+     * each string is added in the order of Contact constructor requires
+     * them to be received.
      *
      * @param firstName - FirstName
      * @param lastName  - LastName
@@ -35,8 +36,8 @@ public class ContactRegister {
     /**
      * FN-3: List all contacts
      * <p>
-     * Using the Iterable interface ".forEach()" the content in the list is printed to the console.
-     * A regular for or for-each loop would do the same thing, but with more lines of code.
+     * Using the forEach() method in the ArrayList class the content in the list is printed to the console.
+     * A regular for or for-each loop would do the same thing, but with more code.
      */
     public void printContactList() {
         contactList.forEach(System.out::println);
@@ -45,19 +46,17 @@ public class ContactRegister {
     /**
      * FN-4: Search for contacts in list
      * <p>
-     * The method checks each Contact's: first and last name (to lower case)
-     * that starts with "query", if either one or both strings matches the query
-     * string that contact is printed to the commandline
+     * The method checks the first and last name (to lower case) of each Contact object in the list,
+     * that starts with whatever the search query is, if either one or both strings matches the query
+     * the matching Contact is printed to the commandline.
      * <p>
-     * Somewhat more detailed method description
-     * <p>
-     * The list is streamed to access all containing object, each Contact is filtered with
-     * first or last-name.startsWith(query) logic to find matches,
-     * Each match is caught by the filter then printed to the commandline, by using the forEach method
+     * Somewhat more detailed method description:
+     * A stream of the ArrayList is opened to access all containing Contacts, the first and last names (to lower case)
+     * of each Contact are filtered through the startsWith() method to find names starting with the query string.
+     * Every match is caught by the filter andprinted to the commandline, by using the forEach method
      * that is available in the Stream interface, that can iterate through lists.
      * <p>
      * The same result could be done with "if logic" in a for/forEach loop.
-     * with more lines of code.
      *
      * @param query - string to match (provided by user)
      */

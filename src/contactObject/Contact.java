@@ -27,7 +27,8 @@ public class Contact implements Serializable {
 
     /**
      * XFN-1: Nicer looking format of contact when printed
-     * Each variable is printed on a separate line, the UUID number is split in to two lines with substring.
+     * Using String.format(), Each variable is printed on a separate line,
+     * with a string clarifying which variable is which.
      *
      * @return formattedToString
      */
