@@ -38,11 +38,10 @@ public class Contact implements Serializable {
                 uuid, firstName, lastName, eMail);
     }
 
-    // Getters necessary for search
+    // Getters necessary for search and destroy
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }

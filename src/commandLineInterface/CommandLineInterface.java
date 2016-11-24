@@ -53,29 +53,42 @@ public class CommandLineInterface {
      * quit: uses flipSwitch to flip the "run" boolean to break out of the while-loop in runCLI.
      */
     private void readInputCommand(String[] inputArray) {
+        reg.sortContactsByFirstName();
         if (inputArray[0].toLowerCase().equals("end") || inputArray[0].toLowerCase().equals("exit")){
             inputArray[0] = "quit"; // Temporary exit commands
         }
         switch (inputArray[0].toLowerCase()) {
-            case "add":
-                reg.addContactToList(inputArray[1], inputArray[2], inputArray[3]);
+            case "add": // feedback done
+                reg.addContactToList(inputArray);
                 break;
-            case "delete":
+            case "delete": // deleted contact + get id
+                reg.removeContactFromList(inputArray[1]);
                 break;
-            case "list":
+            case "list": // listing all existing contacts
                 reg.printContactList();
                 break;
-            case "search":
+            case "search": // feedback done
                 reg.searchContact(inputArray[1]);
                 break;
-            case "help":
+            case "help": // feedback done
+                commandOptionList();
                 break;
-            case "quit":
+            case "quit": // feedback done
                 flipSwitch();
                 break;
             default:
                 break;
         }
+    }
+    private void commandOptionList(){
+        System.out.format("%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+                "Listing all available input commands:",
+                "Add:    add a new contact to list",
+                "Delete: remove a contact from list",
+                "List:   show all contacts in list",
+                "Search: find contact/s in list ",
+                "Quit:   exit the application",
+                "Help:   to get here, lists all available commands");
     }
 
     /**
@@ -87,6 +100,7 @@ public class CommandLineInterface {
      * @return - !run
      */
     private boolean flipSwitch() {
+        System.out.println("Shutting down application, terminating all active processes.");
         return run = !run;
     }
 
