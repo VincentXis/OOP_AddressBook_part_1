@@ -46,4 +46,7 @@ public class Contact implements Serializable {
     public String getLastName() {
         return lastName;
     }
+    public String getUUIDtoString(){
+        return uuid.toString();
+    }
 }

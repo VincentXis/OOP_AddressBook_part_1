@@ -3,11 +3,11 @@ package contactRegister;
 import contactListFileHandler.ContactListFileHandler;
 import contactObject.Contact;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ContactRegister {
     private ContactListFileHandler clf = new ContactListFileHandler();
-    private ArrayList<Contact> contactList;
+    private List<Contact> contactList;
 
     /**
      * The constructor initiates contactList through a method in

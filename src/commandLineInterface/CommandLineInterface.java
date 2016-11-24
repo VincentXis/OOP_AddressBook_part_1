@@ -53,9 +53,14 @@ public class CommandLineInterface {
      * quit: uses flipSwitch to flip the "run" boolean to break out of the while-loop in runCLI.
      */
     private void readInputCommand(String[] inputArray) {
+        if (inputArray[0].toLowerCase().equals("end") || inputArray[0].toLowerCase().equals("exit")){
+            inputArray[0] = "quit"; // Temporary exit commands
+        }
         switch (inputArray[0].toLowerCase()) {
             case "add":
                 reg.addContactToList(inputArray[1], inputArray[2], inputArray[3]);
+                break;
+            case "delete":
                 break;
             case "list":
                 reg.printContactList();
@@ -63,8 +68,12 @@ public class CommandLineInterface {
             case "search":
                 reg.searchContact(inputArray[1]);
                 break;
+            case "help":
+                break;
             case "quit":
                 flipSwitch();
+                break;
+            default:
                 break;
         }
     }

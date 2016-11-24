@@ -4,6 +4,7 @@ import contactObject.Contact;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactListFileHandler {
     // The contactList is stored to this file, created in the src directory.
@@ -19,7 +20,7 @@ public class ContactListFileHandler {
      *
      * @param listOfContacts Contact list to save into a file.
      */
-    public void saveListToDisk(ArrayList<Contact> listOfContacts) {
+    public void saveListToDisk(List<Contact> listOfContacts) {
         if (!listOfContacts.isEmpty()) {
             try (FileOutputStream fos = new FileOutputStream(savedContacts);
                  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -49,7 +50,7 @@ public class ContactListFileHandler {
      * (so that this doesn't happen...) Me -> (╯°o°)╯︵ ┻┻ ‎<- Table
      */
     @SuppressWarnings("unchecked")
-    public ArrayList<Contact> loadListFromFile() {
+    public List<Contact> loadListFromFile() {
         if (savedContacts.exists()) {
             try (FileInputStream is = new FileInputStream(savedContacts);
                  ObjectInputStream ois = new ObjectInputStream(is)) {
